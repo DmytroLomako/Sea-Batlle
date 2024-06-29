@@ -5,18 +5,17 @@ tracer(0, 0)
 speed(0)
 hideturtle()
 
-list = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
-list1 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0,]
+list_letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
+list1 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+list2 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+list3 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+list4 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+list5 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+list6 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+list7 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+list8 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+list9 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+list10 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
 def draw_figure(size, count):
     for i in range(count):
@@ -38,10 +37,10 @@ def draw_field(x, y):
 def text():
     for i in range(9):
         penup()
-        goto(359, (154 - i * 30))
+        goto(35, (154 - i * 30))
         write(i+1, font=("Arial", 13, "bold"))
     penup()
-    goto(354, -116)
+    goto(30, -116)
     write(10, font=("Arial", 13, "bold"))
     for i in range(9):
         penup()
@@ -55,22 +54,22 @@ def text():
         penup()
         if i == 8:
             goto(304, 183)
-            write(list[index], font=("Arial", 13, "bold"))
+            write(list_letters[index], font=("Arial", 13, "bold"))
             index += 1
             continue
         goto((60 + i * 30), 183)
-        write(list[index], font=("Arial", 13, "bold"))
+        write(list_letters[index], font=("Arial", 13, "bold"))
         index += 1
     index = 0
     for i in range(10):
         penup()
         if i == 8:
             goto(-96, 183)
-            write(list[index], font=("Arial", 13, "bold"))
+            write(list_letters[index], font=("Arial", 13, "bold"))
             index += 1
             continue
         goto((-340 + i * 30), 183)
-        write(list[index], font=("Arial", 13, "bold"))
+        write(list_letters[index], font=("Arial", 13, "bold"))
         index += 1
 
 draw = False
@@ -86,24 +85,34 @@ def click(x, y):
     if draw == False:
         if x >= -350 and x <= -320:
             x = 0
+            list = list1
         elif x > -320 and x <= -290:
             x = 1
+            list = list2
         elif x > -290 and x <= -260:
             x = 2
+            list = list3
         elif x > -260 and x <= -230:
             x = 3
+            list = list4
         elif x > -230 and x <= -200:
             x = 4
+            list = list5
         elif x > -200 and x <= -170:
             x = 5
+            list = list6
         elif x > -170 and x <= -140:
             x = 6
+            list = list7
         elif x > -140 and x <= -110:
             x = 7
+            list = list8
         elif x > -110 and x <= -80:
             x = 8
+            list = list9
         elif x > -80 and x <= -50:
             x = 9
+            list = list10
         else:
             x = None
         if y <= 180 and y >= 150:
@@ -129,76 +138,21 @@ def click(x, y):
         else:
             y = None
         if x!= None and y!= None:
-            index = x + y * 10
-            if list1[index] == 0:
+            index = y
+            if list[index] == 0:
                 draw = True
-                list1[index] = 1
-                list1[index + 1] = 1
-                list1[index - 1] = 1
-                list1[index + 10] = 1
-                list1[index - 10] = 1
-                list1[index + 11] = 1
-                list1[index - 11] = 1
-                list1[index + 9] = 1
-                list1[index - 9] = 1
+                list[index] = 1
                 for i in range(4):
                     penup()
-                    goto((x * 30 - 320), (y * -30 + 150))
+                    goto((x * 30 - 350), (y * -30 + 150))
                     pendown()
                     draw_figure(30, 3)
                     draw = False               
-                    
-# def boat1():
-#     for i in range(4):
-#         penup()
-#         seth(90)
-#         goto((-100 + i * 60), -200)
-#         pendown()
-#         draw_figure(25, 3)
-        
-# def boat2():
-#     for i in range(3):
-#         penup()
-#         seth(90)
-#         goto((-90 + i * 90), -250)
-#         pendown()
-#         draw_figure(25, 4)
-#         goto((-115 + i * 90), -250)
-#         draw_figure(25, 3)
-        
-# def boat3():
-#     for i in range(2):
-#         penup()
-#         seth(90)
-#         goto((-50 + i * 120), -300)
-#         pendown()
-#         draw_figure(25, 4)
-#         goto((-75 + i * 120), -300)
-#         draw_figure(25, 4)
-#         goto((-100 + i * 120), -300)
-#         draw_figure(25, 3)
-        
-# def boat4():
-    penup()
-    seth(90)
-    goto((-125 + 1 * 150), -350)
-    pendown()
-    draw_figure(25, 4)
-    goto((-150 + 1 * 150), -350)
-    draw_figure(25, 4)
-    goto((-175 + 1 * 150), -350)
-    draw_figure(25, 4)
-    goto((-200 + 1 * 150), -350)
-    draw_figure(25, 3)
 
 onscreenclick(click)
             
 draw_field(-350, 150)
 draw_field(50, 150)
 text()
-# boat1()
-# boat2()
-# boat3()
-# boat4()
 update()
 mainloop()
