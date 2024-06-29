@@ -81,9 +81,9 @@ text1.speed(0)
 text1.penup()
 text1.goto(-300, 230)
 text1.write('Arrange 1-deck ships', font=("Arial", 16, "bold"))
-
+i = 1
 def click(x, y):
-    global draw, text1
+    global draw, text1, i
     if draw == False:
         if x >= -350 and x <= -320:
             x = 0
@@ -149,26 +149,95 @@ def click(x, y):
             index_y = 9
         else:
             y = None
-        if x!= None and y!= None:
-            if list1[index_x][index_y] == 0:
-                draw = True
-                list1[index_x][index_y] = 1
-                list1[index_x + 1][index_y] = 1
-                list1[index_x - 1][index_y] = 1
-                list1[index_x][index_y + 1] = 1
-                list1[index_x + 1][index_y + 1] = 1
-                list1[index_x - 1][index_y + 1] = 1  
-                list1[index_x][index_y - 1] = 1
-                list1[index_x + 1][index_y - 1] = 1
-                list1[index_x - 1][index_y - 1] = 1 
+        
+        if i <= 4:
+            
+            if x != None and y != None:
+                if list1[index_x][index_y] == 0:
+                    draw = True
+                    list1[index_x][index_y] = 1
+                    list1[index_x + 1][index_y] = 1
+                    list1[index_x - 1][index_y] = 1
+                    list1[index_x][index_y + 1] = 1
+                    list1[index_x + 1][index_y + 1] = 1
+                    list1[index_x - 1][index_y + 1] = 1  
+                    list1[index_x][index_y - 1] = 1
+                    list1[index_x + 1][index_y - 1] = 1
+                    list1[index_x - 1][index_y - 1] = 1 
+                    for o in range(4):
+                        penup()
+                        goto((x * 30 - 350), (y * -30 + 180))
+                        seth(270)
+                        pendown()
+                        draw_figure(30, 3)
+                        draw = False  
+                i += 1
+        elif i > 4:
+            text1.clear()
+            text1.write('Arrange 2-deck ships', font=("Arial", 16, "bold"))
+            question = input('Do you want to arrange 2 deck ship up or right? (up, right)')
+            if question == 'up':
+                if x != None and y != None and y != 0:
+                    if list1[index_x][index_y] == 0 and list1[index_x][index_y - 1] == 0:
+                        draw = True
+                        list1[index_x][index_y] = 1
+                        list1[index_x + 1][index_y] = 1
+                        list1[index_x - 1][index_y] = 1
+                        list1[index_x][index_y + 1] = 1
+                        list1[index_x + 1][index_y + 1] = 1
+                        list1[index_x - 1][index_y + 1] = 1
+                        list1[index_x][index_y - 1] = 1
+                        list1[index_x + 1][index_y - 1] = 1
+                        list1[index_x - 1][index_y - 1] = 1
+                        list1[index_x][index_y - 2] = 1
+                        list1[index_x + 1][index_y - 2] = 1
+                        list1[index_x - 1][index_y - 2] = 1
+                        for j in range(3):
+                            penup()
+                            goto((x * 30 - 320), (y * -30 + 150))
+                            seth(90)
+                            pensize(5)
+                            pendown()
+                            draw_figure(30, 4)
+                            forward(30)
+                            left(90)
+                            forward(30)
+                            right(90)
+                            seth(0)
+                            draw_figure(30, 3)
+                            draw = False
+            elif question == 'right':
+                if x != None and y != None and x != 9:
+                    if list1[index_x][index_y] == 0 and list1[index_x + 1][index_y] == 0:
+                        draw = True
+                        list1[index_x][index_y] = 1
+                        list1[index_x + 1][index_y] = 1
+                        list1[index_x - 1][index_y] = 1
+                        list1[index_x][index_y + 1] = 1
+                        list1[index_x + 1][index_y + 1] = 1
+                        list1[index_x - 1][index_y + 1] = 1
+                        list1[index_x][index_y - 1] = 1
+                        list1[index_x + 1][index_y - 1] = 1
+                        list1[index_x - 1][index_y - 1] = 1
+                        list1[index_x + 2][index_y] = 1
+                        list1[index_x + 2][index_y - 1] = 1
+                        list1[index_x + 2][index_y + 1] = 1
+                        for p in range(3):
+                            penup()
+                            goto((x * 30 - 350), (y * -30 + 150))
+                            seth(0)
+                            pensize(5)
+                            pendown()
+                            draw_figure(30, 4)
+                            seth(0)
+                            forward(30)
+                            left(90)
+                            forward(30)
+                            seth(270)
+                            draw_figure(30, 3)
+                            draw = False
                 
-                for i in range(4):
-                    penup()
-                    goto((x * 30 - 350), (y * -30 + 180))
-                    seth(270)
-                    pendown()
-                    draw_figure(30, 3)
-                    draw = False               
+                    
 
 onscreenclick(click)
             
