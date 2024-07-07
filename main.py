@@ -87,83 +87,63 @@ def click(x, y):
     if draw == False:
         if x >= -350 and x <= -320:
             x = 0
-            index_x = 0 
         elif x > -320 and x <= -290:
             x = 1
-            index_x = 1
         elif x > -290 and x <= -260:
             x = 2
-            index_x = 2
         elif x > -260 and x <= -230:
             x = 3
-            index_x = 3
         elif x > -230 and x <= -200:
             x = 4
-            index_x = 4
         elif x > -200 and x <= -170:
             x = 5
-            index_x = 5
         elif x > -170 and x <= -140:
             x = 6
-            index_x = 6
         elif x > -140 and x <= -110:
             x = 7
-            index_x = 7
         elif x > -110 and x <= -80:
             x = 8
-            index_x = 8
         elif x > -80 and x <= -50:
             x = 9
-            index_x = 9
         else:
             x = None
         if y <= 180 and y >= 150:
             y = 0
-            index_y = 0
         elif y < 150 and y >= 120:
             y = 1
-            index_y = 1
         elif y < 120 and y >= 90:
             y = 2
-            index_y = 2
         elif y < 90 and y >= 60:
             y = 3
-            index_y = 3
         elif y < 60 and y >= 30:
             y = 4
-            index_y = 4
         elif y < 30 and y >= 0:
             y = 5
-            index_y = 5
         elif y < 0 and y >= -30:
             y = 6
-            index_y = 6
         elif y < -30 and y >= -60:
             y = 7
-            index_y = 7
         elif y < -60 and y >= -90:
             y = 8
-            index_y = 8
         elif y < -90 and y >= -120:
             y = 9
-            index_y = 9
         else:
             y = None
         
         if i <= 4:
             
             if x != None and y != None:
-                if list1[index_x][index_y] == 0:
+                if list1[x][y] == 0:
                     draw = True
-                    list1[index_x][index_y] = 1
-                    list1[index_x + 1][index_y] = 1
-                    list1[index_x - 1][index_y] = 1
-                    list1[index_x][index_y + 1] = 1
-                    list1[index_x + 1][index_y + 1] = 1
-                    list1[index_x - 1][index_y + 1] = 1  
-                    list1[index_x][index_y - 1] = 1
-                    list1[index_x + 1][index_y - 1] = 1
-                    list1[index_x - 1][index_y - 1] = 1 
+                    list1[x][y] = 1
+                    list1[x + 1][y] = 1
+                    list1[x - 1][y] = 1
+                    list1[x][y + 1] = 1
+                    list1[x + 1][y + 1] = 1
+                    list1[x - 1][y + 1] = 1  
+                    list1[x][y - 1] = 1
+                    list1[x + 1][y - 1] = 1
+                    list1[x - 1][y - 1] = 1 
                     for o in range(4):
                         penup()
                         goto((x * 30 - 350), (y * -30 + 180))
@@ -180,20 +160,20 @@ def click(x, y):
                 question = input('Do you want to arrange 2 deck ship up or right? (up, right)')
             if question == 'up':
                 if x != None and y != None and y != 0:
-                    if list1[index_x][index_y] == 0 and list1[index_x][index_y - 1] == 0:
+                    if list1[x][y] == 0 and list1[x][y - 1] == 0:
                         draw = True
-                        list1[index_x][index_y] = 1
-                        list1[index_x + 1][index_y] = 1
-                        list1[index_x - 1][index_y] = 1
-                        list1[index_x][index_y + 1] = 1
-                        list1[index_x + 1][index_y + 1] = 1
-                        list1[index_x - 1][index_y + 1] = 1
-                        list1[index_x][index_y - 1] = 1
-                        list1[index_x + 1][index_y - 1] = 1
-                        list1[index_x - 1][index_y - 1] = 1
-                        list1[index_x][index_y - 2] = 1
-                        list1[index_x + 1][index_y - 2] = 1
-                        list1[index_x - 1][index_y - 2] = 1
+                        list1[x][y] = 1
+                        list1[x + 1][y] = 1
+                        list1[x - 1][y] = 1
+                        list1[x][y + 1] = 1
+                        list1[x + 1][y + 1] = 1
+                        list1[x - 1][y + 1] = 1
+                        list1[x][y - 1] = 1
+                        list1[x + 1][y - 1] = 1
+                        list1[x - 1][y - 1] = 1
+                        list1[x][y - 2] = 1
+                        list1[x + 1][y - 2] = 1
+                        list1[x - 1][y - 2] = 1
                         for j in range(3):
                             penup()
                             goto((x * 30 - 320), (y * -30 + 150))
@@ -211,20 +191,20 @@ def click(x, y):
                         i += 1
             elif question == 'right':
                 if x != None and y != None and x != 9:
-                    if list1[index_x][index_y] == 0 and list1[index_x + 1][index_y] == 0:
+                    if list1[x][y] == 0 and list1[x + 1][y] == 0:
                         draw = True
-                        list1[index_x][index_y] = 1
-                        list1[index_x + 1][index_y] = 1
-                        list1[index_x - 1][index_y] = 1
-                        list1[index_x][index_y + 1] = 1
-                        list1[index_x + 1][index_y + 1] = 1
-                        list1[index_x - 1][index_y + 1] = 1
-                        list1[index_x][index_y - 1] = 1
-                        list1[index_x + 1][index_y - 1] = 1
-                        list1[index_x - 1][index_y - 1] = 1
-                        list1[index_x + 2][index_y] = 1
-                        list1[index_x + 2][index_y - 1] = 1
-                        list1[index_x + 2][index_y + 1] = 1
+                        list1[x][y] = 1
+                        list1[x + 1][y] = 1
+                        list1[x - 1][y] = 1
+                        list1[x][y + 1] = 1
+                        list1[x + 1][y + 1] = 1
+                        list1[x - 1][y + 1] = 1
+                        list1[x][y - 1] = 1
+                        list1[x + 1][y - 1] = 1
+                        list1[x - 1][y - 1] = 1
+                        list1[x + 2][y] = 1
+                        list1[x + 2][y - 1] = 1
+                        list1[x + 2][y + 1] = 1
                         for p in range(3):
                             penup()
                             goto((x * 30 - 350), (y * -30 + 150))
@@ -248,23 +228,23 @@ def click(x, y):
                 question1 = input('Do you want to arrange 3 deck ship up or right? (up, right)')
             if question1 == 'up':
                 if x != None and y != None and y != 0:
-                    if list1[index_x][index_y] == 0 and list1[index_x][index_y - 1] == 0 and list1[index_x][index_y - 2] == 0:
+                    if list1[x][y] == 0 and list1[x][y - 1] == 0 and list1[x][y - 2] == 0:
                         draw = True
-                        list1[index_x][index_y] = 1
-                        list1[index_x + 1][index_y] = 1
-                        list1[index_x - 1][index_y] = 1
-                        list1[index_x][index_y + 1] = 1
-                        list1[index_x + 1][index_y + 1] = 1
-                        list1[index_x - 1][index_y + 1] = 1
-                        list1[index_x][index_y - 1] = 1
-                        list1[index_x + 1][index_y - 1] = 1
-                        list1[index_x - 1][index_y - 1] = 1
-                        list1[index_x][index_y - 2] = 1
-                        list1[index_x + 1][index_y - 2] = 1
-                        list1[index_x - 1][index_y - 2] = 1
-                        list1[index_x][index_y - 3] = 1
-                        list1[index_x + 1][index_y - 3] = 1
-                        list1[index_x - 1][index_y - 3] = 1
+                        list1[x][y] = 1
+                        list1[x + 1][y] = 1
+                        list1[x - 1][y] = 1
+                        list1[x][y + 1] = 1
+                        list1[x + 1][y + 1] = 1
+                        list1[x - 1][y + 1] = 1
+                        list1[x][y - 1] = 1
+                        list1[x + 1][y - 1] = 1
+                        list1[x - 1][y - 1] = 1
+                        list1[x][y - 2] = 1
+                        list1[x + 1][y - 2] = 1
+                        list1[x - 1][y - 2] = 1
+                        list1[x][y - 3] = 1
+                        list1[x + 1][y - 3] = 1
+                        list1[x - 1][y - 3] = 1
                         for j in range(2):
                             penup()
                             goto((x * 30 - 320), (y * -30 + 150))
@@ -286,23 +266,23 @@ def click(x, y):
                         i += 1
             if question1 == 'right':
                 if x != None and y != None and x != 9:
-                    if list1[index_x][index_y] == 0 and list1[index_x + 1][index_y] == 0 and list1[index_x + 2][index_y] == 0:
+                    if list1[x][y] == 0 and list1[x + 1][y] == 0 and list1[x + 2][y] == 0:
                         draw = True
-                        list1[index_x][index_y] = 1
-                        list1[index_x + 1][index_y] = 1
-                        list1[index_x - 1][index_y] = 1
-                        list1[index_x][index_y + 1] = 1
-                        list1[index_x + 1][index_y + 1] = 1
-                        list1[index_x - 1][index_y + 1] = 1
-                        list1[index_x][index_y - 1] = 1
-                        list1[index_x + 1][index_y - 1] = 1
-                        list1[index_x - 1][index_y - 1] = 1
-                        list1[index_x + 2][index_y] = 1
-                        list1[index_x + 2][index_y - 1] = 1
-                        list1[index_x + 2][index_y + 1] = 1
-                        list1[index_x + 3][index_y] = 1
-                        list1[index_x + 3][index_y - 1] = 1
-                        list1[index_x + 3][index_y + 1] = 1
+                        list1[x][y] = 1
+                        list1[x + 1][y] = 1
+                        list1[x - 1][y] = 1
+                        list1[x][y + 1] = 1
+                        list1[x + 1][y + 1] = 1
+                        list1[x - 1][y + 1] = 1
+                        list1[x][y - 1] = 1
+                        list1[x + 1][y - 1] = 1
+                        list1[x - 1][y - 1] = 1
+                        list1[x + 2][y] = 1
+                        list1[x + 2][y - 1] = 1
+                        list1[x + 2][y + 1] = 1
+                        list1[x + 3][y] = 1
+                        list1[x + 3][y - 1] = 1
+                        list1[x + 3][y + 1] = 1
                         for p in range(2):
                             penup()
                             goto((x * 30 - 350), (y * -30 + 150))
@@ -330,26 +310,26 @@ def click(x, y):
                 question2 = input('Do you want to arrange 4 deck ship up or right? (up, right)')
             if question2 == 'up':
                 if x != None and y != None and y != 0:
-                    if list1[index_x][index_y] == 0 and list1[index_x][index_y - 1] == 0 and list1[index_x][index_y - 2] == 0 and list1[index_x][index_y - 3] == 0:
+                    if list1[x][y] == 0 and list1[x][y - 1] == 0 and list1[x][y - 2] == 0 and list1[x][y - 3] == 0:
                         draw = True
-                        list1[index_x][index_y] = 1
-                        list1[index_x + 1][index_y] = 1
-                        list1[index_x - 1][index_y] = 1
-                        list1[index_x][index_y + 1] = 1
-                        list1[index_x + 1][index_y + 1] = 1
-                        list1[index_x - 1][index_y + 1] = 1
-                        list1[index_x][index_y - 1] = 1
-                        list1[index_x + 1][index_y - 1] = 1
-                        list1[index_x - 1][index_y - 1] = 1
-                        list1[index_x][index_y - 2] = 1
-                        list1[index_x + 1][index_y - 2] = 1
-                        list1[index_x - 1][index_y - 2] = 1
-                        list1[index_x][index_y - 3] = 1
-                        list1[index_x + 1][index_y - 3] = 1
-                        list1[index_x - 1][index_y - 3] = 1
-                        list1[index_x][index_y - 4] = 1
-                        list1[index_x + 1][index_y - 4] = 1
-                        list1[index_x - 1][index_y - 4] = 1
+                        list1[x][y] = 1
+                        list1[x + 1][y] = 1
+                        list1[x - 1][y] = 1
+                        list1[x][y + 1] = 1
+                        list1[x + 1][y + 1] = 1
+                        list1[x - 1][y + 1] = 1
+                        list1[x][y - 1] = 1
+                        list1[x + 1][y - 1] = 1
+                        list1[x - 1][y - 1] = 1
+                        list1[x][y - 2] = 1
+                        list1[x + 1][y - 2] = 1
+                        list1[x - 1][y - 2] = 1
+                        list1[x][y - 3] = 1
+                        list1[x + 1][y - 3] = 1
+                        list1[x - 1][y - 3] = 1
+                        list1[x][y - 4] = 1
+                        list1[x + 1][y - 4] = 1
+                        list1[x - 1][y - 4] = 1
                         for j in range(5):
                             penup()
                             goto((x * 30 - 320), (y * -30 + 150))
@@ -375,26 +355,26 @@ def click(x, y):
                         i += 1
             if question2 == 'right':
                 if x != None and y != None and x != 9:
-                    if list1[index_x][index_y] == 0 and list1[index_x + 1][index_y] == 0 and list1[index_x + 2][index_y] == 0 and list1[index_x + 3][index_y] == 0:
+                    if list1[x][y] == 0 and list1[x + 1][y] == 0 and list1[x + 2][y] == 0 and list1[x + 3][y] == 0:
                         draw = True
-                        list1[index_x][index_y] = 1
-                        list1[index_x + 1][index_y] = 1
-                        list1[index_x - 1][index_y] = 1
-                        list1[index_x][index_y + 1] = 1
-                        list1[index_x + 1][index_y + 1] = 1
-                        list1[index_x - 1][index_y + 1] = 1
-                        list1[index_x][index_y - 1] = 1
-                        list1[index_x + 1][index_y - 1] = 1
-                        list1[index_x - 1][index_y - 1] = 1
-                        list1[index_x + 2][index_y] = 1
-                        list1[index_x + 2][index_y - 1] = 1
-                        list1[index_x + 2][index_y + 1] = 1
-                        list1[index_x + 3][index_y] = 1
-                        list1[index_x + 3][index_y - 1] = 1
-                        list1[index_x + 3][index_y + 1] = 1
-                        list1[index_x + 4][index_y] = 1
-                        list1[index_x + 4][index_y - 1] = 1
-                        list1[index_x + 4][index_y + 1] = 1
+                        list1[x][y] = 1
+                        list1[x + 1][y] = 1
+                        list1[x - 1][y] = 1
+                        list1[x][y + 1] = 1
+                        list1[x + 1][y + 1] = 1
+                        list1[x - 1][y + 1] = 1
+                        list1[x][y - 1] = 1
+                        list1[x + 1][y - 1] = 1
+                        list1[x - 1][y - 1] = 1
+                        list1[x + 2][y] = 1
+                        list1[x + 2][y - 1] = 1
+                        list1[x + 2][y + 1] = 1
+                        list1[x + 3][y] = 1
+                        list1[x + 3][y - 1] = 1
+                        list1[x + 3][y + 1] = 1
+                        list1[x + 4][y] = 1
+                        list1[x + 4][y - 1] = 1
+                        list1[x + 4][y + 1] = 1
                         for p in range(5):
                             penup()
                             goto((x * 30 - 350), (y * -30 + 150))
