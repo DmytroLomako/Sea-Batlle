@@ -81,10 +81,48 @@ text1.speed(0)
 text1.penup()
 text1.goto(-300, 230)
 text1.write('Arrange 1-deck ships', font=("Arial", 16, "bold"))
+hideturtle()
+speed(0)
+penup()
+goto(-350, -300)
+pendown()
+pensize(3)
+forward(150)
+left(90)
+forward(150)
+left(90)
+forward(150)
+left(90)
+forward(150)
+left(90)
+penup()
+goto(-305, -255)
+write('UP', font=("Arial", 50, "bold"))
+goto(-150, -300)
+pendown()
+forward(150)
+left(90)
+forward(150)
+left(90)
+forward(150)
+left(90)
+forward(150)
+left(90)
+penup()
+goto(-142, -250)
+write('RIGHT', font=("Arial", 45, "bold"))
+pendown()
+pensize(1)
+
 i = 1
 def click(x, y):
-    global draw, text1, i
+    global draw, text1, i, button, button_clicked
     if draw == False:
+        if x > -350 and x < -200 and y > -300 and y < -150:
+            button_clicked = 1
+        elif x >= -150 and x <= 0 and y >= -300 and y <= -150:
+            button_clicked = 2
+        
         if x >= -350 and x <= -320:
             x = 0
         elif x > -320 and x <= -290:
@@ -107,6 +145,7 @@ def click(x, y):
             x = 9
         else:
             x = None
+
         if y <= 180 and y >= 150:
             y = 0
         elif y < 150 and y >= 120:
@@ -131,9 +170,9 @@ def click(x, y):
             y = None
         
         if i <= 4:
-            
             if x != None and y != None:
                 if list1[x][y] == 0:
+                    pensize(3)
                     draw = True
                     list1[x][y] = 1
                     list1[x + 1][y] = 1
@@ -152,13 +191,11 @@ def click(x, y):
                         draw_figure(30, 3)
                         draw = False  
                     i += 1
+                    if i == 5:
+                        text1.clear()
+                        text1.write('Arrange 2-deck ships', font=("Arial", 16, "bold"))
         elif i > 4 and i <= 7:
-            text1.clear()
-            text1.write('Arrange 2-deck ships', font=("Arial", 16, "bold"))
-            question = input('Do you want to arrange 2 deck ship up or right? (up, right)')
-            while question not in ('up', 'right'):
-                question = input('Do you want to arrange 2 deck ship up or right? (up, right)')
-            if question == 'up':
+            if button_clicked == 1:             
                 if x != None and y != None and y != 0:
                     if list1[x][y] == 0 and list1[x][y - 1] == 0:
                         draw = True
@@ -178,7 +215,7 @@ def click(x, y):
                             penup()
                             goto((x * 30 - 320), (y * -30 + 150))
                             seth(90)
-                            pensize(5)
+                            pensize(3)
                             pendown()
                             draw_figure(30, 4)
                             forward(30)
@@ -189,7 +226,11 @@ def click(x, y):
                             draw_figure(30, 3)
                             draw = False
                         i += 1
-            elif question == 'right':
+                        button_clicked = 0
+                        if i == 8:
+                            text1.clear()
+                            text1.write('Arrange 3-deck ships', font=("Arial", 16, "bold"))
+            elif button_clicked == 2:
                 if x != None and y != None and x != 9:
                     if list1[x][y] == 0 and list1[x + 1][y] == 0:
                         draw = True
@@ -209,7 +250,7 @@ def click(x, y):
                             penup()
                             goto((x * 30 - 350), (y * -30 + 150))
                             seth(0)
-                            pensize(5)
+                            pensize(3)
                             pendown()
                             draw_figure(30, 4)
                             seth(0)
@@ -220,13 +261,12 @@ def click(x, y):
                             draw_figure(30, 3)
                             draw = False
                         i += 1
+                        button_clicked = 0
+                        if i == 8:
+                            text1.clear()
+                            text1.write('Arrange 3-deck ships', font=("Arial", 16, "bold"))
         elif i > 7 and i <= 9:
-            text1.clear()
-            text1.write('Arrange 3-deck ships', font=("Arial", 16, "bold"))
-            question1 = input('Do you want to arrange 3 deck ship up or right? (up, right)')
-            while question1 not in ('up', 'right'):
-                question1 = input('Do you want to arrange 3 deck ship up or right? (up, right)')
-            if question1 == 'up':
+            if button_clicked == 1:
                 if x != None and y != None and y != 0:
                     if list1[x][y] == 0 and list1[x][y - 1] == 0 and list1[x][y - 2] == 0:
                         draw = True
@@ -249,7 +289,7 @@ def click(x, y):
                             penup()
                             goto((x * 30 - 320), (y * -30 + 150))
                             seth(90)
-                            pensize(5)
+                            pensize(3)
                             pendown()
                             draw_figure(30, 4)
                             forward(30)
@@ -264,7 +304,11 @@ def click(x, y):
                             draw_figure(30, 3)
                             draw = False
                         i += 1
-            if question1 == 'right':
+                        button_clicked = 0
+                        if i == 10:
+                            text1.clear()
+                            text1.write('Arrange 4-deck ship', font=("Arial", 16, "bold"))
+            if button_clicked == 2:
                 if x != None and y != None and x != 9:
                     if list1[x][y] == 0 and list1[x + 1][y] == 0 and list1[x + 2][y] == 0:
                         draw = True
@@ -287,7 +331,7 @@ def click(x, y):
                             penup()
                             goto((x * 30 - 350), (y * -30 + 150))
                             seth(0)
-                            pensize(5)
+                            pensize(3)
                             pendown()
                             draw_figure(30, 4)
                             seth(0)
@@ -302,13 +346,12 @@ def click(x, y):
                             draw_figure(30, 3)
                             draw = False        
                         i += 1
+                        button_clicked = 0
+                        if i == 10:
+                            text1.clear()
+                            text1.write('Arrange 4-deck ship', font=("Arial", 16, "bold"))
         elif i == 10:
-            text1.clear()
-            text1.write('Arrange 4-deck ship', font=("Arial", 16, "bold"))
-            question2 = input('Do you want to arrange 4 deck ship up or right? (up, right)')
-            while question2 not in ('up', 'right'):
-                question2 = input('Do you want to arrange 4 deck ship up or right? (up, right)')
-            if question2 == 'up':
+            if button_clicked == 1:
                 if x != None and y != None and y != 0:
                     if list1[x][y] == 0 and list1[x][y - 1] == 0 and list1[x][y - 2] == 0 and list1[x][y - 3] == 0:
                         draw = True
@@ -334,7 +377,7 @@ def click(x, y):
                             penup()
                             goto((x * 30 - 320), (y * -30 + 150))
                             seth(90)
-                            pensize(5)
+                            pensize(3)
                             pendown()
                             draw_figure(30, 4)
                             forward(30)
@@ -353,7 +396,8 @@ def click(x, y):
                             draw_figure(30, 3)
                             draw = False
                         i += 1
-            if question2 == 'right':
+                        button_clicked = 0
+            if button_clicked == 2:
                 if x != None and y != None and x != 9:
                     if list1[x][y] == 0 and list1[x + 1][y] == 0 and list1[x + 2][y] == 0 and list1[x + 3][y] == 0:
                         draw = True
@@ -379,7 +423,7 @@ def click(x, y):
                             penup()
                             goto((x * 30 - 350), (y * -30 + 150))
                             seth(0)
-                            pensize(5)
+                            pensize(3)
                             pendown()
                             draw_figure(30, 4)
                             seth(0)
@@ -398,6 +442,7 @@ def click(x, y):
                             draw_figure(30, 3)
                             draw = False
                         i += 1
+                        button_clicked = 0
 onscreenclick(click)
             
 draw_field(-350, 150)
