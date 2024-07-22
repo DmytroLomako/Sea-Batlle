@@ -352,7 +352,8 @@ def click(x, y):
                         button_clicked = 0
                         button.clear()
                         text1.clear()
-                        text1.write('Attack!', font=("Arial", 16, "bold"))
+                        text1.goto(-50, 200)
+                        text1.write('Attack!', font=("Arial", 30, "bold"))
             if button_clicked == 2:
                 if x != None and y != None and x != 9:
                     if list1[x][y] == 0 and list1[x + 1][y] == 0 and list1[x + 2][y] == 0 and list1[x + 3][y] == 0:
@@ -433,6 +434,7 @@ def click(x, y):
                         penup()
                         goto(xe * 30 + 65, y * -30 + 155)
                         color('blue')
+                        seth(0)
                         pendown()
                         begin_fill()
                         circle(10)
