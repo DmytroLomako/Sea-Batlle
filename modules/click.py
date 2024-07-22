@@ -1,6 +1,7 @@
 from turtle import *
 from .map import list1, draw_figure
 from .enemyships import list_enemy
+from random import randint
 
 draw = False
 text1 = Turtle()
@@ -44,10 +45,10 @@ button.write('RIGHT', font=("Arial", 45, "bold"))
 button.pendown()
 button.pensize(1)
 button_clicked = 0
-
+turn = 0
 i = 1
 def click(x, y):
-    global draw, text1, i, button_clicked, button
+    global draw, text1, i, button_clicked, button, turn
     if draw == False:
         if x > -350 and x < -200 and y > -300 and y < -150:
             button_clicked = 1
@@ -126,7 +127,7 @@ def click(x, y):
                 if list1[x][y] == 0:
                     pensize(3)
                     draw = True
-                    list1[x][y] = 1
+                    list1[x][y] = 2
                     list1[x + 1][y] = 1
                     list1[x - 1][y] = 1
                     list1[x][y + 1] = 1
@@ -151,13 +152,13 @@ def click(x, y):
                 if x != None and y != None and y != 0:
                     if list1[x][y] == 0 and list1[x][y - 1] == 0:
                         draw = True
-                        list1[x][y] = 1
+                        list1[x][y] = 2
                         list1[x + 1][y] = 1
                         list1[x - 1][y] = 1
                         list1[x][y + 1] = 1
                         list1[x + 1][y + 1] = 1
                         list1[x - 1][y + 1] = 1
-                        list1[x][y - 1] = 1
+                        list1[x][y - 1] = 2
                         list1[x + 1][y - 1] = 1
                         list1[x - 1][y - 1] = 1
                         list1[x][y - 2] = 1
@@ -186,8 +187,8 @@ def click(x, y):
                 if x != None and y != None and x != 9:
                     if list1[x][y] == 0 and list1[x + 1][y] == 0:
                         draw = True
-                        list1[x][y] = 1
-                        list1[x + 1][y] = 1
+                        list1[x][y] = 2
+                        list1[x + 1][y] = 2
                         list1[x - 1][y] = 1
                         list1[x][y + 1] = 1
                         list1[x + 1][y + 1] = 1
@@ -222,16 +223,16 @@ def click(x, y):
                 if x != None and y != None and y != 0:
                     if list1[x][y] == 0 and list1[x][y - 1] == 0 and list1[x][y - 2] == 0:
                         draw = True
-                        list1[x][y] = 1
+                        list1[x][y] = 2
                         list1[x + 1][y] = 1
                         list1[x - 1][y] = 1
                         list1[x][y + 1] = 1
                         list1[x + 1][y + 1] = 1
                         list1[x - 1][y + 1] = 1
-                        list1[x][y - 1] = 1
+                        list1[x][y - 1] = 2
                         list1[x + 1][y - 1] = 1
                         list1[x - 1][y - 1] = 1
-                        list1[x][y - 2] = 1
+                        list1[x][y - 2] = 2
                         list1[x + 1][y - 2] = 1
                         list1[x - 1][y - 2] = 1
                         list1[x][y - 3] = 1
@@ -264,8 +265,8 @@ def click(x, y):
                 if x != None and y != None and x != 9:
                     if list1[x][y] == 0 and list1[x + 1][y] == 0 and list1[x + 2][y] == 0:
                         draw = True
-                        list1[x][y] = 1
-                        list1[x + 1][y] = 1
+                        list1[x][y] = 2
+                        list1[x + 1][y] = 2
                         list1[x - 1][y] = 1
                         list1[x][y + 1] = 1
                         list1[x + 1][y + 1] = 1
@@ -273,7 +274,7 @@ def click(x, y):
                         list1[x][y - 1] = 1
                         list1[x + 1][y - 1] = 1
                         list1[x - 1][y - 1] = 1
-                        list1[x + 2][y] = 1
+                        list1[x + 2][y] = 2
                         list1[x + 2][y - 1] = 1
                         list1[x + 2][y + 1] = 1
                         list1[x + 3][y] = 1
@@ -307,19 +308,19 @@ def click(x, y):
                 if x != None and y != None and y != 0:
                     if list1[x][y] == 0 and list1[x][y - 1] == 0 and list1[x][y - 2] == 0 and list1[x][y - 3] == 0:
                         draw = True
-                        list1[x][y] = 1
+                        list1[x][y] = 2
                         list1[x + 1][y] = 1
                         list1[x - 1][y] = 1
                         list1[x][y + 1] = 1
                         list1[x + 1][y + 1] = 1
                         list1[x - 1][y + 1] = 1
-                        list1[x][y - 1] = 1
+                        list1[x][y - 1] = 2
                         list1[x + 1][y - 1] = 1
                         list1[x - 1][y - 1] = 1
-                        list1[x][y - 2] = 1
+                        list1[x][y - 2] = 2
                         list1[x + 1][y - 2] = 1
                         list1[x - 1][y - 2] = 1
-                        list1[x][y - 3] = 1
+                        list1[x][y - 3] = 2
                         list1[x + 1][y - 3] = 1
                         list1[x - 1][y - 3] = 1
                         list1[x][y - 4] = 1
@@ -351,12 +352,13 @@ def click(x, y):
                         button_clicked = 0
                         button.clear()
                         text1.clear()
+                        text1.write('Attack!', font=("Arial", 16, "bold"))
             if button_clicked == 2:
                 if x != None and y != None and x != 9:
                     if list1[x][y] == 0 and list1[x + 1][y] == 0 and list1[x + 2][y] == 0 and list1[x + 3][y] == 0:
                         draw = True
-                        list1[x][y] = 1
-                        list1[x + 1][y] = 1
+                        list1[x][y] = 2
+                        list1[x + 1][y] = 2
                         list1[x - 1][y] = 1
                         list1[x][y + 1] = 1
                         list1[x + 1][y + 1] = 1
@@ -364,10 +366,10 @@ def click(x, y):
                         list1[x][y - 1] = 1
                         list1[x + 1][y - 1] = 1
                         list1[x - 1][y - 1] = 1
-                        list1[x + 2][y] = 1
+                        list1[x + 2][y] = 2
                         list1[x + 2][y - 1] = 1
                         list1[x + 2][y + 1] = 1
-                        list1[x + 3][y] = 1
+                        list1[x + 3][y] = 2
                         list1[x + 3][y - 1] = 1
                         list1[x + 3][y + 1] = 1
                         list1[x + 4][y] = 1
@@ -399,11 +401,52 @@ def click(x, y):
                         button_clicked = 0
                         button.clear()
                         text1.clear()
+                        text1.goto(-50, 200)
+                        text1.write('Attack!', font=("Arial", 30, "bold"))
         elif i == 11:
-            if xe != None and y != None:
-                if list_enemy[y][xe] == 2:
+            if turn == 0:
+                if xe != None and y != None:
+                    if list_enemy[y][xe] == 2:
+                        list_enemy[y][xe] = 3
+                        draw = True
+                        penup()
+                        goto(xe * 30 + 65, y * -30 + 165)
+                        color('red')
+                        left(45)
+                        pendown()
+                        forward(20)
+                        left(180)
+                        forward(40)
+                        penup()
+                        goto(xe * 30 + 65, y * -30 + 165)
+                        pendown()
+                        right(90)
+                        forward(20)
+                        right(180)
+                        forward(40)
+                        left(45)
+                        color('black')
+                        draw = False
+                    elif list_enemy[y][xe] == 1 or list_enemy[y][xe] == 0:
+                        list_enemy[y][xe] = 4
+                        draw = True
+                        penup()
+                        goto(xe * 30 + 65, y * -30 + 155)
+                        color('blue')
+                        pendown()
+                        begin_fill()
+                        circle(10)
+                        end_fill()
+                        color('black')
+                        draw = False
+                        turn = 1
+            elif turn == 1:
+                r1 = randint(0, 9)
+                r2 = randint(0, 9)
+                if list1[r2][r1] == 2:
+                    list1[r2][r1] = 3
                     penup()
-                    goto(xe * 30 + 65, y * -30 + 165)
+                    goto(r2 * 30 - 335, r1 * -30 + 165)
                     color('red')
                     left(45)
                     pendown()
@@ -411,7 +454,7 @@ def click(x, y):
                     left(180)
                     forward(40)
                     penup()
-                    goto(xe * 30 + 65, y * -30 + 165)
+                    goto(r2 * 30 - 335, r1 * -30 + 165)
                     pendown()
                     right(90)
                     forward(20)
@@ -419,5 +462,14 @@ def click(x, y):
                     forward(40)
                     left(45)
                     color('black')
-            else:
-                print('no')
+                elif list1[r2][r1] == 1 or list1[r2][r1] == 0:
+                    list1[r2][r1] = 4
+                    penup()
+                    goto(r2 * 30 - 335, r1 * -30 + 155)
+                    color('blue')
+                    pendown()
+                    begin_fill()
+                    circle(10)
+                    end_fill()
+                    color('black')
+                    turn = 0
