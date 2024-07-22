@@ -1,5 +1,6 @@
 from turtle import *
 from .map import list1, draw_figure
+from .enemyships import list_enemy
 
 draw = False
 text1 = Turtle()
@@ -73,8 +74,29 @@ def click(x, y):
             x = 8
         elif x > -80 and x <= -50:
             x = 9
+        elif x >= 50 and x <= 80:
+            xe = 0
+        elif x > 80 and x <= 110:
+            xe = 1
+        elif x > 110 and x <= 140:
+            xe = 2
+        elif x > 140 and x <= 170:
+            xe = 3
+        elif x > 170 and x <= 200:
+            xe = 4
+        elif x > 200 and x <= 230:
+            xe = 5
+        elif x > 230 and x <= 260:
+            xe = 6
+        elif x > 260 and x <= 290:
+            xe = 7
+        elif x > 290 and x <= 320:
+            xe = 8
+        elif x > 320 and x <= 350:
+            xe = 9
         else:
             x = None
+            xe = None
 
         if y <= 180 and y >= 150:
             y = 0
@@ -377,3 +399,25 @@ def click(x, y):
                         button_clicked = 0
                         button.clear()
                         text1.clear()
+        elif i == 11:
+            if xe != None and y != None:
+                if list_enemy[y][xe] == 2:
+                    penup()
+                    goto(xe * 30 + 65, y * -30 + 165)
+                    color('red')
+                    left(45)
+                    pendown()
+                    forward(20)
+                    left(180)
+                    forward(40)
+                    penup()
+                    goto(xe * 30 + 65, y * -30 + 165)
+                    pendown()
+                    right(90)
+                    forward(20)
+                    right(180)
+                    forward(40)
+                    left(45)
+                    color('black')
+            else:
+                print('no')
