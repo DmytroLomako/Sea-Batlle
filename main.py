@@ -1,10 +1,11 @@
 from turtle import *
-from random import *
+from enemyships import list_enemy
 
 tracer(0, 0)
 speed(0)
 hideturtle()
-
+for i in list_enemy:
+    print(i)
 list_letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
 list1 = [
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -19,11 +20,25 @@ list1 = [
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 ]
+list2 = [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+]
+
 def draw_figure(size, count):
     for i in range(count):
         forward(size)
         left(360/count)
-    
+
 def draw_field(x, y):
     penup()
     goto(x, y)
@@ -81,42 +96,44 @@ text1.speed(0)
 text1.penup()
 text1.goto(-300, 230)
 text1.write('Arrange 1-deck ships', font=("Arial", 16, "bold"))
-hideturtle()
-speed(0)
-penup()
-goto(-350, -300)
-pendown()
-pensize(3)
-forward(150)
-left(90)
-forward(150)
-left(90)
-forward(150)
-left(90)
-forward(150)
-left(90)
-penup()
-goto(-305, -255)
-write('UP', font=("Arial", 50, "bold"))
-goto(-150, -300)
-pendown()
-forward(150)
-left(90)
-forward(150)
-left(90)
-forward(150)
-left(90)
-forward(150)
-left(90)
-penup()
-goto(-142, -250)
-write('RIGHT', font=("Arial", 45, "bold"))
-pendown()
-pensize(1)
+button = Turtle()
+button.hideturtle()
+button.speed(0)
+button.penup()
+button.goto(-350, -300)
+button.pendown()
+button.pensize(3)
+button.forward(150)
+button.left(90)
+button.forward(150)
+button.left(90)
+button.forward(150)
+button.left(90)
+button.forward(150)
+button.left(90)
+button.penup()
+button.goto(-305, -255)
+button.write('UP', font=("Arial", 50, "bold"))
+button.goto(-150, -300)
+button.pendown()
+button.forward(150)
+button.left(90)
+button.forward(150)
+button.left(90)
+button.forward(150)
+button.left(90)
+button.forward(150)
+button.left(90)
+button.penup()
+button.goto(-142, -250)
+button.write('RIGHT', font=("Arial", 45, "bold"))
+button.pendown()
+button.pensize(1)
+button_clicked = 0
 
 i = 1
 def click(x, y):
-    global draw, text1, i, button, button_clicked
+    global draw, text1, i, button_clicked, button
     if draw == False:
         if x > -350 and x < -200 and y > -300 and y < -150:
             button_clicked = 1
@@ -397,6 +414,8 @@ def click(x, y):
                             draw = False
                         i += 1
                         button_clicked = 0
+                        button.clear()
+                        text1.clear()
             if button_clicked == 2:
                 if x != None and y != None and x != 9:
                     if list1[x][y] == 0 and list1[x + 1][y] == 0 and list1[x + 2][y] == 0 and list1[x + 3][y] == 0:
@@ -443,6 +462,8 @@ def click(x, y):
                             draw = False
                         i += 1
                         button_clicked = 0
+                        button.clear()
+                        text1.clear()
 onscreenclick(click)
             
 draw_field(-350, 150)
